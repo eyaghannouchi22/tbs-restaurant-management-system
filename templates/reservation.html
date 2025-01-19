@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Your Next Spot</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script> <!-- QR Code Library -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        header {
+            background-color: #d4af37;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.7em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1em;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #f8d07a;
+        }
+
+        main {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .reservation-box {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .reservation-box h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .reservation-box p {
+            font-size: 1em;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .reservation-box label {
+            display: block;
+            margin: 10px 0 5px;
+            font-size: 1em;
+        }
+
+        .reservation-box select,
+        .reservation-box input[type="text"],
+        .reservation-box input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .reservation-box button {
+            background-color: #d4af37;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .reservation-box button:hover {
+            background-color: #c59b33;
+        }
+
+        /* QR Code Section */
+        #qr-code-section {
+            margin-top: 30px;
+            display: none;
+            text-align: center;
+        }
+
+        #qr-code {
+            margin: 20px auto;
+            width: 150px;
+            height: 150px;
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+            TBS Restaurant
+        </div>
+        <nav>
+            <a href="home.html">Home</a>
+            <a href="reservation.html">Reserve</a>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <h1>Save Your Next Spot</h1>
+
+        <!-- Reservation Box -->
+        <div class="reservation-box">
+            <h2>Available Tickets: <span id="available-tickets">10</span></h2>
+            <p>Dish of the Day: <strong>Grilled Chicken with Vegetables</strong></p>
+            
+            <form id="reservation-form">
+                <label for="student-name">Student Name:</label>
+                <input type="text" id="student-name" name="student-name" placeholder="Enter your name" required>
+
+                <label for="time-slot">Select an Approximate Time Slot:</label>
+                <select id="time-slot" name="time-slot" required>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="12:30 PM">12:30 PM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                </select>
+
+                <button type="submit">Reserve Now</button>
+            </form>
+        </div>
+
+        <!-- QR Code Section -->
+        <div id="qr-code-section">
+            <h3>Your Reservation QR Code</h3>
+            <div id="qr-code"></div>
+            <button onclick="downloadQRCode()">Download QR Code</button>
+        </div>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Tunis Business School Restaurant</p>
+    </footer>
+
+    <!-- Script to Handle Reservation and Generate QR Code -->
+    <script>
+        const form = document.getElementById('reservation-form');
+        const availableTickets = document.getElementById('available-tickets');
+        const qrCodeSection = document.getElementById('qr-code-section');
+        const qrCodeElement = document.getElementById('qr-code');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            let tickets = parseInt(availableTickets.textContent);
+
+            if (tickets > 0) {
+                tickets--;
+                availableTickets.textContent = tickets;
+                alert('Your reservation has been made successfully!');
+
+                // Generate QR Code with reservation info (name and time slot)
+                const studentName = document.getElementById('student-name').value;
+                const timeSlot = document.getElementById('time-slot').value;
+                const reservationData = `Reservation: ${studentName} at ${timeSlot}`;
+
+                QRCode.toDataURL(reservationData, { width: 150, height: 150 }, (err, url) => {
+                    if (err) {
+                        console.error(err);
+                    } else {
+                        qrCodeElement.innerHTML = `<img src="${url}" alt="QR Code">`;
+                        qrCodeSection.style.display = 'block';
+                    }
+                });
+            } else {
+                alert('Sorry, no tickets are available.');
+            }
+
+            form.reset();
+        });
+
+        // Function to download the QR code
+        function downloadQRCode() {
+            const img = document.querySelector('#qr-code img');
+            const link = document.createElement('a');
+            link.href = img.src;
+            link.download = 'reservation-qr-code.png';
+            link.click();
+        }
+    </script>
+</body>
+</html>

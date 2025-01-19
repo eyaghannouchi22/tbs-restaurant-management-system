@@ -1,0 +1,289 @@
+/* General Styles */
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Added a modern font for a sleeker look */
+    margin: 0;
+    padding: 0;
+    background-color: #f9fafc; /* Slightly lighter background for better contrast */
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #d4af37; /* More elegant gold shade */
+    color: white;
+    padding: 15px 20px; /* Increased padding for better spacing */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Added subtle shadow for depth */
+}
+
+header .logo {
+    font-size: 1.7em; /* Slightly increased font size */
+    font-weight: bold;
+    display: flex;
+    align-items: center; /* Aligns the image with the text */
+}
+
+header .logo img {
+    height: 60px; /* Adjusted size for better proportions */
+    margin-right: 10px;
+    border-radius: 50%; /* Makes the image circular for a modern look */
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px; /* Increased spacing for balance */
+    font-size: 1em;
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+header nav a:hover {
+    color: #f8d07a; /* Light gold shade for hover effect */
+}
+
+/* Main Content Styles */
+main {
+    text-align: center;
+    padding: 40px 20px; /* More spacing for a spacious feel */
+}
+
+.welcome h1 {
+    font-size: 2.5em; /* Slightly larger for emphasis */
+    margin-bottom: 25px;
+    color: #444; /* Darker text for better readability */
+}
+
+.cta-buttons .btn {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 25px; /* Increased padding for comfort */
+    background-color: #d4af37; /* Same elegant gold as the header */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px; /* Rounder corners for a softer feel */
+    font-size: 1em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Added shadow for depth */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+}
+
+.cta-buttons .btn:hover {
+    background-color: #c59b33; /* Slightly darker gold for hover */
+    transform: scale(1.05); /* Subtle zoom effect */
+}
+
+/* Info Section Styles */
+.info {
+    margin-top: 30px;
+    font-size: 1.1em;
+    line-height: 1.6; /* Increased line spacing for readability */
+    color: #555;
+    background: #fff; /* White background for contrast */
+    padding: 20px;
+    border-radius: 10px; /* Rounded edges for a modern card-like appearance */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Footer Styles */
+footer {
+    background-color: #f1f1f1;
+    padding: 15px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+    border-top: 1px solid #ddd; /* Adds a clean divider line */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav {
+        margin-top: 10px;
+    }
+
+    main {
+        padding: 20px;
+    }
+
+    .cta-buttons .btn {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+}
+.review-form {
+    text-align: left;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.review-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.review-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.review-form h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.rating {
+    margin: 15px 0;
+}
+
+.stars {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.stars img {
+    width: 40px; /* Adjust size of the stars */
+    cursor: pointer;
+}
+
+.stars input {
+    display: none; /* Hide the radio buttons */
+}
+
+.review-box {
+    margin-top: 20px;
+}
+
+.review-box textarea {
+    width: 80%;
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+button.btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #e9cf5e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button.btn:hover {
+    background-color: #d1b358;
+}
+.stars img {
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.stars label:hover img {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.stars input:checked + label img {
+    transform: scale(1.2);
+    opacity: 1;
+    border: 2px solid #e9cf5e; /* Optional: Highlight selected star */
+    border-radius: 5px;
+}
+.stars img {
+    width: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.stars label:hover img {
+    transform: scale(1.2);
+    opacity: 0.8;
+}
+
+.stars input:checked + label img {
+    transform: scale(1.2);
+    opacity: 1;
+    border: 2px solid #e9cf5e; /* Optional: Highlight selected star */
+    border-radius: 5px;
+}
+.thank-you {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.thank-you h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 0px;
+}
+
+.thank-you p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.thank-you-img {
+    max-width: 30%; /* Adjust this value to make the image smaller */
+    height: auto;
+    border-radius: 10px;
+    margin: 0 auto 30px; /* Centers the image horizontally */
+    display: block; /* Ensures the image is treated as a block element */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.thank-you .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #e9cf5e;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.thank-you .btn:hover {
+    background-color: #d4b14c;
+}/* Style for the button container */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adds space between buttons */
+    margin-top: 20px;
+}
+
+/* Style for individual buttons */
+.btn {
+    background-color: #d4b14c; /* Green color */
+    color: white; /* White text */
+    padding: 14px 20px; /* Padding for size */
+    text-align: center;
+    text-decoration: none; /* Removes underline */
+    display: inline-block;
+    border-radius: 5px; /* Rounded corners */
+    font-size: 16px; /* Text size */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+}
+
+/* Hover effect for buttons */
+.btn:hover {
+    background-color: #d4b14c; /* Darker green on hover */
+}
+

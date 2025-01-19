@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - TBS Restaurant (Staff)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">TBS Restaurant </div>
+        <nav>
+            <a href="loginstaff.html">Login</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="create-account-form">
+            <h1>Create Staff Account</h1>
+            <form id="createStaffForm" action="staff-dashboard.html" method="POST" onsubmit="return validateForm()">
+                <label for="staffName">Staff Name:</label>
+                <input type="text" id="staffName" name="staffName" required>
+
+                <label for="staffID">Staff ID:</label>
+                <input type="text" id="staffID" name="staffID" pattern="^\d{8}$" 
+                       title="Staff ID must consist of exactly 8 digits." required>
+
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                <button type="submit" class="btn">Create Account</button>
+            </form>
+            <p>Already have an account? <a href="loginstaff.html">Login here</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Tunis Business School Restaurant</p>
+    </footer>
+
+    <script>
+        // JavaScript validation for Staff ID and password confirmation
+        function validateForm() {
+            const staffID = document.getElementById("staffID").value;
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirmPassword").value;
+
+            // Validate Staff ID (must be exactly 8 digits)
+            if (!/^\d{8}$/.test(staffID)) {
+                alert("Staff ID must consist of exactly 8 digits.");
+                return false;
+            }
+
+            // Validate Password Confirmation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match. Please re-enter.");
+                return false;
+            }
+
+            // All validations passed
+            return true;
+        }
+    </script>
+</body>
+</html>

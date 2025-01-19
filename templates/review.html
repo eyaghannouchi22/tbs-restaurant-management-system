@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Write a Review</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="TBS Logo">
+            TBS Restaurant        </div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="#profile">Profile</a>
+            <a href="#notifications">Notifications</a>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="welcome">
+            <h1>Write a Review on Today's Dish</h1>
+            <p><strong>Dish of the Day:</strong> Makrouna Tajine Slata Orange</p>
+        </section>
+
+        <section class="review-form">
+            <h2>Your Feedback Matters!</h2>
+            <form action="submit_review.php" method="post">
+                <!-- Star Rating System -->
+                <div class="rating">
+                    <label for="rating">Rate the Dish:</label>
+                    <div class="stars">
+                        <input type="radio" name="rating" id="star5" value="5">
+                        <label for="star5"><img src="star.png" alt="5 stars"></label>
+                        
+                        <input type="radio" name="rating" id="star4" value="4">
+                        <label for="star4"><img src="star.png" alt="4 stars"></label>
+                        
+                        <input type="radio" name="rating" id="star3" value="3">
+                        <label for="star3"><img src="star.png" alt="3 stars"></label>
+                        
+                        <input type="radio" name="rating" id="star2" value="2">
+                        <label for="star2"><img src="star.png" alt="2 stars"></label>
+                        
+                        <input type="radio" name="rating" id="star1" value="1">
+                        <label for="star1"><img src="star.png" alt="1 star"></label>
+                    </div>
+                </div>
+                
+
+                <!-- Review Box -->
+                <div class="review-box">
+                    <label for="review">Write Your Review:</label>
+                    <textarea id="review" name="review" rows="5" cols="40" placeholder="Share your thoughts about today's dish..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <a href="thankyou.html" class="btn" role="button">Submit Review</a>
+
+
+
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>© 2025 Tunis Business School Restaurant</p>
+    </footer>
+</body>
+</html>
